@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +27,9 @@ public class User implements UserDetails {
 
     @Column(nullable = false,unique = true)
     private String uid;
+
+    @Column(nullable = false)
+    private String name;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)

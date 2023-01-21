@@ -20,6 +20,7 @@ target/
 *.iml
 *.ipr
 application.properties
+info.log
 
 ### NetBeans ###
 /nbproject/private/
