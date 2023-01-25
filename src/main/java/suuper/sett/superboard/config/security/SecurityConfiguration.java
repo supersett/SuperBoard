@@ -46,7 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("**exception**").permitAll()
 
-                .anyRequest().hasRole("ADMIN") // 나머지 요청은 인증된 ADMIN만 접근 가능
+                // 나는 status를 1로 설정해놓음 .나머지 요청은 인증된 ADMIN만 접근 가능
+                //.anyRequest().hasRole("1")
+                .anyRequest().permitAll()
 
                 .and()
                 .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())

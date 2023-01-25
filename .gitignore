@@ -21,6 +21,7 @@ target/
 *.ipr
 application.properties
 info.log
+*.gz
 
 ### NetBeans ###
 /nbproject/private/

@@ -5,10 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import suuper.sett.superboard.config.security.JwtTokenProvider;
+import suuper.sett.superboard.data.dto.BoardDto;
 import suuper.sett.superboard.data.entity.Board;
 import suuper.sett.superboard.data.repository.BoardRepository;
 import suuper.sett.superboard.data.repository.UserRepository;
 import suuper.sett.superboard.service.BoardService;
+
+import java.util.Optional;
+
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -30,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
         board=Board.builder()
                 .writer(writer)
                 .title(title)
-                .content(title)
+                .content(content)
                 .build();
 
         Board savedBoard =boardRepository.save(board);
@@ -42,8 +46,11 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void boardRead(long id) {
+    public BoardDto boardRead(long id) {
+        Optional<Board> targetBoard = boardRepository.findById(id);
+        BoardDto boardDto = new BoardDto(targetBoard.get().getTitle(), targetBoard.get().getContent());
 
+        return boardDto;
     }
 
     @Override
